@@ -11,12 +11,14 @@ public final class Book {
     private final int pageCount;
 
     public Book(String name, String author, List<Page> pages){
-        this.name = name;
-        this.author = author;
+        this.name = name == null ? "" : name;
+        this.author = author == null ? "" : author;
         this.pages = new ArrayList<>();
 
-        for (Page page: pages){
-            this.pages.add(new Page(page.id, page.wordCount, page.content));
+        if(pages != null) {
+            for (Page page : pages) {
+                if(page != null) this.pages.add(page.clone());
+            }
         }
         this.pageCount = this.pages.size();
     }
@@ -32,9 +34,9 @@ public final class Book {
     public List<Page> getPages() {
         List<Page> pagesCopy = new ArrayList<>();
         for (Page page: this.pages){
-            pagesCopy.add(new Page(page.id, page.wordCount, page.content));
+            pagesCopy.add(page.clone());
         }
-        return Collections.unmodifiableList(pagesCopy);
+        return List.copyOf(pagesCopy);
     }
 
     public int getPageCount() {

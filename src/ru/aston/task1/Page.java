@@ -1,9 +1,9 @@
 package ru.aston.task1;
 
-public class Page {
-    int id;
-    int wordCount;
-    String content;
+public class Page implements Cloneable{
+    private int id;
+    private int wordCount;
+    private String content;
 
     public Page(int id, String content){
         this.id = id;
@@ -18,11 +18,8 @@ public class Page {
     }
 
     public int countWords(){
-        if(this.content.isEmpty()){
-            return 0;
-        }else{
-            return this.content.split(" ").length;
-        }
+        if(this.content.isEmpty()) return 0;
+        return this.content.split(" ").length;
     }
 
     public void setId(int id) {
@@ -31,6 +28,7 @@ public class Page {
 
     public void setContent(String content) {
         this.content = content;
+        this.wordCount = this.countWords();
     }
 
     public int getId() {
@@ -48,5 +46,15 @@ public class Page {
     @Override
     public String toString(){
         return String.format("| Страница: %d | Количество слов: %d | Содержание: %s |", this.id, this.wordCount, this.content);
+    }
+
+    @Override
+    public Page clone(){
+        try {
+            return (Page) super.clone();
+        }
+        catch (CloneNotSupportedException e){
+            throw new AssertionError(e);
+        }
     }
 }
