@@ -13,7 +13,7 @@ public class Page implements Cloneable{
 
     protected Page(int id, int wordCount, String content){
         this.id = id;
-        this.content = content;
+        this.content = content != null ? content : "";
         this.wordCount = wordCount;
     }
 
