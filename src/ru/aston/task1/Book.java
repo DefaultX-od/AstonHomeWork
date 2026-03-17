@@ -12,8 +12,8 @@ public final class Book {
     private final int pageCount;
 
     public Book(String name, String author, List<Page> pages) {
-        this.name = Objects.requireNonNullElse(name, "");
-        this.author = Objects.requireNonNullElse(author, "");
+        this.name = (name == null) ? "" : name;
+        this.author = (author == null) ? "" : author;
         this.pages = new ArrayList<>();
 
         if(pages != null) {
@@ -46,6 +46,6 @@ public final class Book {
 
     @Override
     public String toString() {
-        return String.format("| Название: %s| Автор: %s | Количество страниц %d |",this.name, this.author, this.pageCount);
+        return String.format("| Название: %s| Автор: %s | Количество страниц %d |", name, author, pageCount);
     }
 }
