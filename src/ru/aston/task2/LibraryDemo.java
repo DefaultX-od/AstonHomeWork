@@ -47,7 +47,7 @@ public class LibraryDemo {
 
                 String[] bookFields = bd.split(",");
                 if (bookFields.length < 3) {
-                    throw new IllegalArgumentException(String.format("Неверный формат данных в строке: '%s'", line));
+                    throw new IllegalArgumentException(String.format("Недостаточно данных в записи: '%s'", bd));
                 }
                 books.add(new Book(bookFields));
             }
