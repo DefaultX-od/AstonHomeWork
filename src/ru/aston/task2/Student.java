@@ -3,6 +3,7 @@ package ru.aston.task2;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Student {
     private int id;
@@ -13,12 +14,12 @@ public class Student {
     private List<Book> books;
 
     public Student(String[] args, List<Book> books) {
-        this.id = UtilsHelpers.strSafeParseInt(args[0]);
-        this.group = Objects.requireNonNullElse(args[1], "");
-        this.firstName = Objects.requireNonNullElse(args[2], "");
-        this.lastName = Objects.requireNonNullElse(args[3], "");
-        this.course = UtilsHelpers.strSafeParseInt(args[4]);
-        this.books = List.copyOf(Objects.requireNonNullElse(books, Collections.emptyList()));
+        this.id = Integer.parseInt(args[0]);
+        this.group = (args[1] == null) ? "" : args[1];
+        this.firstName = (args[2] == null) ? "" : args[2];
+        this.lastName = (args[3] == null) ? "" : args[3];
+        this.course = Integer.parseInt(args[4]);
+        this.books = (books == null) ? List.of() : List.copyOf(books);
     }
 
     public int getId() {
@@ -50,15 +51,15 @@ public class Student {
     }
 
     public void setGroup(String group) {
-        this.group = group;
+        this.group = (group == null) ? "" : group;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = (firstName == null) ? "" : firstName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = (lastName == null) ? "" : lastName;
     }
 
     public void setCourse(int course) {
@@ -66,7 +67,7 @@ public class Student {
     }
 
     public void setBooks(List<Book> books) {
-        this.books = List.copyOf(books);
+        this.books = (books == null) ? List.of() : List.copyOf(books);
     }
 
     @Override

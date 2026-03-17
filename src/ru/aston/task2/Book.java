@@ -8,9 +8,9 @@ public class Book {
     private int pageCount;
 
     public Book(String[] args) {
-        this.name = Objects.requireNonNullElse(args[0], "");
-        this.year = UtilsHelpers.strSafeParseInt(args[1]);
-        this.pageCount = UtilsHelpers.strSafeParseInt(args[2]);
+        this.name = (args[0] == null) ? "" : args[0];
+        this.year = Integer.parseInt(args[1]);
+        this.pageCount = Integer.parseInt(args[2]);
     }
 
     public String getName() {
@@ -26,7 +26,7 @@ public class Book {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = (name == null) ? "" : name;
     }
 
     public void setPageCount(int pageCount) {
