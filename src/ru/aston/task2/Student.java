@@ -1,6 +1,8 @@
 package ru.aston.task2;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Student {
     private int id;
@@ -10,13 +12,13 @@ public class Student {
     private int course;
     private List<Book> books;
 
-    public Student(String[] args, List<Book> books){
-        this.id = Integer.parseInt(args[0]);
-        this.group = args[1];
-        this.firstName = args[2];
-        this.lastName = args[3];
-        this.course = Integer.parseInt(args[4]);
-        this.books = books;
+    public Student(String[] args, List<Book> books) {
+        this.id = UtilsHelpers.strSafeParseInt(args[0]);
+        this.group = Objects.requireNonNullElse(args[1], "");
+        this.firstName = Objects.requireNonNullElse(args[2], "");
+        this.lastName = Objects.requireNonNullElse(args[3], "");
+        this.course = UtilsHelpers.strSafeParseInt(args[4]);
+        this.books = List.copyOf(Objects.requireNonNullElse(books, Collections.emptyList()));
     }
 
     public int getId() {
@@ -68,7 +70,7 @@ public class Student {
     }
 
     @Override
-    public String toString(){
-        return String.format("{id: %d, group: %s, firstName: %s, lastName: %s, course: %d}",id, group, firstName, lastName, course);
+    public String toString() {
+        return String.format("{id: %d, group: %s, firstName: %s, lastName: %s, course: %d}", id, group, firstName, lastName, course);
     }
 }
