@@ -15,6 +15,5 @@ public class BookDemo {
         for(Page page: book.getPages()){
             System.out.println(page);
         }
-
     }
 }

@@ -1,24 +1,29 @@
 package ru.aston.task1;
 
-public class Page implements Cloneable{
+import java.util.Objects;
+
+public class Page implements Cloneable {
     private int id;
     private int wordCount;
     private String content;
 
-    public Page(int id, String content){
+    public Page(int id, String content) {
         this.id = id;
-        this.content = content;
+        this.content = Objects.requireNonNullElse(content, "");
         this.wordCount = this.countWords();
     }
 
-    protected Page(int id, int wordCount, String content){
+    protected Page(int id, int wordCount, String content) {
         this.id = id;
-        this.content = content != null ? content : "";
+        this.content = Objects.requireNonNullElse(content, "");
         this.wordCount = wordCount;
     }
 
-    public int countWords(){
-        if(this.content.isEmpty()) return 0;
+    public int countWords() {
+        if (this.content.isEmpty()) {
+            return 0;
+        }
+
         return this.content.split(" ").length;
     }
 
@@ -44,16 +49,16 @@ public class Page implements Cloneable{
     }
 
     @Override
-    public String toString(){
-        return String.format("| Страница: %d | Количество слов: %d | Содержание: %s |", this.id, this.wordCount, this.content);
+    public String toString() {
+        return String.format("| Страница: %d | Количество слов: %d | Содержание: %s |", id, wordCount, content);
     }
 
     @Override
-    public Page clone(){
+    public Page clone() {
         try {
             return (Page) super.clone();
         }
-        catch (CloneNotSupportedException e){
+        catch (CloneNotSupportedException e) {
             throw new AssertionError(e);
         }
     }
