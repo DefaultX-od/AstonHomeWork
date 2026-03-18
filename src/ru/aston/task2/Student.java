@@ -1,9 +1,6 @@
 package ru.aston.task2;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
 
 public class Student {
     private int id;
@@ -13,11 +10,11 @@ public class Student {
     private int course;
     private List<Book> books;
 
-    public Student(String[] args, List<Book> books) {
+    public Student(final String[] args, final List<Book> books) {
         this.id = Integer.parseInt(args[0]);
-        this.group = (args[1] == null) ? "" : args[1];
-        this.firstName = (args[2] == null) ? "" : args[2];
-        this.lastName = (args[3] == null) ? "" : args[3];
+        this.group = args[1];
+        this.firstName = args[2];
+        this.lastName = args[3];
         this.course = Integer.parseInt(args[4]);
         this.books = (books == null) ? List.of() : List.copyOf(books);
     }
@@ -46,27 +43,27 @@ public class Student {
         return books;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
-    public void setGroup(String group) {
-        this.group = (group == null) ? "" : group;
+    public void setGroup(final String group) {
+        this.group = group;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = (firstName == null) ? "" : firstName;
+    public void setFirstName(final String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = (lastName == null) ? "" : lastName;
+    public void setLastName(final String lastName) {
+        this.lastName = lastName;
     }
 
-    public void setCourse(int course) {
+    public void setCourse(final int course) {
         this.course = course;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(final List<Book> books) {
         this.books = (books == null) ? List.of() : List.copyOf(books);
     }
 

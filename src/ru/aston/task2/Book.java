@@ -7,8 +7,8 @@ public class Book {
     private int year;
     private int pageCount;
 
-    public Book(String[] args) {
-        this.name = (args[0] == null) ? "" : args[0];
+    public Book(final String[] args) {
+        this.name = args[0];
         this.year = Integer.parseInt(args[1]);
         this.pageCount = Integer.parseInt(args[2]);
     }
@@ -25,15 +25,15 @@ public class Book {
         return pageCount;
     }
 
-    public void setName(String name) {
-        this.name = (name == null) ? "" : name;
+    public void setName(final String name) {
+        this.name = name;
     }
 
-    public void setPageCount(int pageCount) {
+    public void setPageCount(final int pageCount) {
         this.pageCount = pageCount;
     }
 
-    public void setYear(int year) {
+    public void setYear(final int year) {
         this.year = year;
     }
 
@@ -43,7 +43,7 @@ public class Book {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
         return year == book.year && pageCount == book.pageCount && Objects.equals(name, book.name);

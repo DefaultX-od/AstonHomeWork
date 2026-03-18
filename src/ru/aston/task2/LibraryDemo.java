@@ -8,8 +8,9 @@ import java.util.*;
 
 public class LibraryDemo {
 
-    public static List<String> loadData(String uri) {
+    public static List<String> loadData(final String uri) {
         List<String> data = new ArrayList<>();
+
         try {
             data = Files.readAllLines(Paths.get(uri));
         } catch (FileNotFoundException e) {
@@ -17,6 +18,7 @@ public class LibraryDemo {
         } catch (IOException e) {
             System.out.println(e);
         }
+
         return data;
     }
 
@@ -49,6 +51,7 @@ public class LibraryDemo {
                 if (bookFields.length < 3) {
                     throw new IllegalArgumentException(String.format("Недостаточно данных в записи: '%s'", bd));
                 }
+
                 books.add(new Book(bookFields));
             }
             students.add(new Student(studentData, books));
