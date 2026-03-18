@@ -7,13 +7,13 @@ public class Page implements Cloneable {
     private int wordCount;
     private String content;
 
-    public Page(int id, String content) {
+    public Page(final int id, final String content) {
         this.id = id;
         this.content = content;
         this.wordCount = this.countWords();
     }
 
-    protected Page(int id, int wordCount, String content) {
+    protected Page(final int id, final int wordCount, final String content) {
         this.id = id;
         this.content = content;
         this.wordCount = wordCount;
@@ -27,12 +27,12 @@ public class Page implements Cloneable {
         return this.content.split(" ").length;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
-    public void setContent(String content) {
-        this.content = (content == null) ? "" : content;
+    public void setContent(final String content) {
+        this.content = content;
         this.wordCount = this.countWords();
     }
 
