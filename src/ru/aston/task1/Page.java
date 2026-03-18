@@ -9,13 +9,13 @@ public class Page implements Cloneable {
 
     public Page(int id, String content) {
         this.id = id;
-        this.content = (content == null) ? "" : content;
+        this.content = content;
         this.wordCount = this.countWords();
     }
 
     protected Page(int id, int wordCount, String content) {
         this.id = id;
-        this.content = (content == null) ? "" : content;
+        this.content = content;
         this.wordCount = wordCount;
     }
 
