@@ -15,11 +15,11 @@ public class StudentFileParser {
 
     }
 
-    public static List<String> loadData(final String uri) {
+    public static List<String> loadData(final String filePathFromUser) {
         List<String> data = new ArrayList<>();
 
         try {
-            data = Files.readAllLines(Paths.get(uri));
+            data = Files.readAllLines(Paths.get(filePathFromUser));
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден");
         } catch (IOException e) {
@@ -85,8 +85,8 @@ public class StudentFileParser {
         return new StudentParserResultHelper(studentData, booksList);
     }
 
-    public static List<Student> loadStudents(final String uri){
-        List<String> data = StudentFileParser.loadData(uri);
+    public static List<Student> loadStudents(final String filePathFromUser){
+        List<String> data = StudentFileParser.loadData(filePathFromUser);
         List<Student> students = new ArrayList<>();
 
         for (final String line : data){

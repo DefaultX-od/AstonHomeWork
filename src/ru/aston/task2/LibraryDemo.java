@@ -1,13 +1,20 @@
 package ru.aston.task2;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class LibraryDemo {
 
-    public static void main(String[] args) {
-        final String uri = "src/ru/aston/task2/data.txt";
+    public static String getFilePathFromUser(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите путь к файлу:");
+        return scanner.nextLine();
+    }
 
-        final List<Student> students = StudentFileParser.loadStudents(uri);
+    public static void main(String[] args) {
+        final String filePathFromUser = getFilePathFromUser();
+
+        final List<Student> students = StudentFileParser.loadStudents(filePathFromUser);
 
         LibraryService.printStudentsAndBookYear(students, 2000);
     }
