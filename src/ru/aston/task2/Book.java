@@ -3,9 +3,9 @@ package ru.aston.task2;
 import java.util.Objects;
 
 public class Book {
-    private String name;
-    private int year;
-    private int pageCount;
+    final private String name;
+    final private int year;
+    final private int pageCount;
 
     public Book(final String[] args) {
         this.name = args[0];
@@ -23,18 +23,6 @@ public class Book {
 
     public int getPageCount() {
         return pageCount;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    public void setPageCount(final int pageCount) {
-        this.pageCount = pageCount;
-    }
-
-    public void setYear(final int year) {
-        this.year = year;
     }
 
     @Override
