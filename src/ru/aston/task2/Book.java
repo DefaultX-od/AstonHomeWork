@@ -3,6 +3,8 @@ package ru.aston.task2;
 import java.util.Objects;
 
 public class Book {
+    final public static int SIMPLE_FIELDS_NUMBER = 3;
+
     final private String name;
     final private int year;
     final private int pageCount;

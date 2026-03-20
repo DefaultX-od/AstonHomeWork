@@ -3,6 +3,9 @@ package ru.aston.task2;
 import java.util.List;
 
 public class Student {
+    final public static int MIN_NUMBER_OF_BOOKS = 5;
+    final public static int SIMPLE_FIELDS_NUMBER = 5;
+
     final private int id;
     final private String group;
     final private String firstName;
@@ -40,7 +43,7 @@ public class Student {
     }
 
     public List<Book> getBooks() {
-        return books;
+        return List.copyOf(books);
     }
 
     @Override
