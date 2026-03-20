@@ -7,10 +7,10 @@ public class Book {
     final private int year;
     final private int pageCount;
 
-    public Book(final String[] args) {
-        this.name = args[0];
-        this.year = Integer.parseInt(args[1]);
-        this.pageCount = Integer.parseInt(args[2]);
+    public Book(final String name, final int year, final int pageCount ) {
+        this.name = name;
+        this.year = year;
+        this.pageCount = pageCount;
     }
 
     public String getName() {

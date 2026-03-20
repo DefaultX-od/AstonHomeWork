@@ -10,12 +10,12 @@ public class Student {
     final private int course;
     final private List<Book> books;
 
-    public Student(final String[] args, final List<Book> books) {
-        this.id = Integer.parseInt(args[0]);
-        this.group = args[1];
-        this.firstName = args[2];
-        this.lastName = args[3];
-        this.course = Integer.parseInt(args[4]);
+    public Student(final int id, final String group, final String firstName, final String lastName, final int course, final List<Book> books) {
+        this.id = id;
+        this.group = group;
+        this.firstName = firstName;
+        this.lastName = firstName;
+        this.course = course;
         this.books = (books == null) ? List.of() : List.copyOf(books);
     }
 
