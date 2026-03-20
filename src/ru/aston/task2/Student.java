@@ -17,7 +17,7 @@ public class Student {
         this.id = id;
         this.group = group;
         this.firstName = firstName;
-        this.lastName = firstName;
+        this.lastName = lastName;
         this.course = course;
         this.books = (books == null) ? List.of() : List.copyOf(books);
     }

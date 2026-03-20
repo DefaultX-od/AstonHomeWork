@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class LibraryService {
-    private LibraryService(){
+    private LibraryService() {
 
     }
 

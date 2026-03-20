@@ -28,7 +28,7 @@ public class Book {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("{name: %s, year: %d, pageCount: %d}", name, year, pageCount);
     }
 

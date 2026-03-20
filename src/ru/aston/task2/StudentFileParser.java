@@ -11,7 +11,7 @@ import java.util.List;
 public class StudentFileParser {
     final public static int MIN_NUMBER_OF_PARTS = 2;
 
-    private StudentFileParser(){
+    private StudentFileParser() {
 
     }
 
@@ -32,7 +32,7 @@ public class StudentFileParser {
     private static String[] separateStudentsFromBooks(final String line) throws IllegalArgumentException {
         final String[] parts = line.trim().split("\\|");
 
-        if (parts.length < MIN_NUMBER_OF_PARTS){
+        if (parts.length < MIN_NUMBER_OF_PARTS) {
             throw new IllegalArgumentException(String.format("Неверный формат данных в строке: '%s'", line));
         }
 
@@ -42,7 +42,7 @@ public class StudentFileParser {
     private static String[] separateStudentFields(final String studentString) throws IllegalArgumentException {
         final String[] studentData = studentString.trim().split(",");
 
-        if (studentData.length < Student.SIMPLE_FIELDS_NUMBER){
+        if (studentData.length < Student.SIMPLE_FIELDS_NUMBER) {
             throw new IllegalArgumentException(String.format("Недостаточно данных в записи о студенте: '%s'", studentString));
         }
 
@@ -52,7 +52,7 @@ public class StudentFileParser {
     private static String[] separateBooks(final String booksString) throws IllegalArgumentException {
         final String[] booksArr = booksString.trim().split("/");
 
-        if (booksArr.length < Student.MIN_NUMBER_OF_BOOKS){
+        if (booksArr.length < Student.MIN_NUMBER_OF_BOOKS) {
             throw new IllegalArgumentException("У студента должно быть не менее 5 книг");
         }
 
@@ -62,7 +62,7 @@ public class StudentFileParser {
     private static List<String> separateBookFields(final String bookString) throws IllegalArgumentException {
         final List<String> bookFields = Arrays.asList(bookString.trim().split(","));
 
-        if (bookFields.size() < Book.SIMPLE_FIELDS_NUMBER){
+        if (bookFields.size() < Book.SIMPLE_FIELDS_NUMBER) {
             throw new IllegalArgumentException(String.format("Недостаточно данных в записи о книге: '%s'", bookString));
         }
 
@@ -77,7 +77,7 @@ public class StudentFileParser {
         final List<String> booksStringList =  Arrays.stream(separateBooks(parts[1])).toList();
         List<String[]> booksList = new ArrayList<>();
 
-        for (final String bookString : booksStringList){
+        for (final String bookString : booksStringList) {
             List<String> fields = separateBookFields(bookString);
             booksList.add(fields.toArray(new String[0]));
         }
@@ -85,11 +85,11 @@ public class StudentFileParser {
         return new StudentParserResultHelper(studentData, booksList);
     }
 
-    public static List<Student> loadStudents(final String filePathFromUser){
+    public static List<Student> loadStudents(final String filePathFromUser) {
         List<String> data = loadData(filePathFromUser);
         List<Student> students = new ArrayList<>();
 
-        for (final String line : data){
+        for (final String line : data) {
             final List<Book> books = new ArrayList<>();
             final StudentParserResultHelper studentParserResultHelper = parseLine(line);
 
@@ -100,7 +100,7 @@ public class StudentFileParser {
             final String studentLastName = studentData[3];
             final int studentCourse = Integer.parseInt(studentData[4]);
 
-            for (final String[] bookData : studentParserResultHelper.getBooks()){
+            for (final String[] bookData : studentParserResultHelper.getBooks()) {
                 final String name = bookData[0];
                 final int year = Integer.parseInt(bookData[1]);
                 final int pageCount = Integer.parseInt(bookData[2]);

@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class LibraryDemo {
 
-    public static String getFilePathFromUser(){
+    public static String getFilePathFromUser() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите путь к файлу:");
         return scanner.nextLine();
