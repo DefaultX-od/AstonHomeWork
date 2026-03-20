@@ -86,7 +86,7 @@ public class StudentFileParser {
     }
 
     public static List<Student> loadStudents(final String filePathFromUser){
-        List<String> data = StudentFileParser.loadData(filePathFromUser);
+        List<String> data = loadData(filePathFromUser);
         List<Student> students = new ArrayList<>();
 
         for (final String line : data){
