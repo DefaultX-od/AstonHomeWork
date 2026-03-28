@@ -13,7 +13,6 @@ public class Game {
         this.priceUSD = priceUSD;
     }
 
-
     public String getName() {
         return name;
     }
@@ -24,5 +23,10 @@ public class Game {
 
     public BigDecimal getPriceUSD() {
         return priceUSD;
+    }
+
+    @Override
+    public String toString(){
+        return String.format("name: %s, description: %s, priceUSD: %s", name, description, priceUSD);
     }
 }

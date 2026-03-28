@@ -11,4 +11,9 @@ public class UnitedStatesRegionStrategy implements RegionStrategy {
         return priceUSD.multiply(TAX_MULTIPLIER)
                 .setScale(2, RoundingMode.HALF_UP);
     }
+
+    @Override
+    public Currency getCurrency() {
+        return Currency.USD;
+    }
 }
