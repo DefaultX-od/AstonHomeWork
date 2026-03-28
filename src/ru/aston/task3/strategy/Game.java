@@ -7,7 +7,7 @@ public class Game {
     private final String description;
     private final BigDecimal priceUSD;
 
-    public Game(final String name, final String description, final BigDecimal priceUSD){
+    public Game(final String name, final String description, final BigDecimal priceUSD) {
         this.name = name;
         this.description = description;
         this.priceUSD = priceUSD;
@@ -26,7 +26,7 @@ public class Game {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("name: %s, description: %s, priceUSD: %s", name, description, priceUSD);
     }
 }

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class CartItem {
     private final Game game;
 
-    public CartItem(final Game game){
+    public CartItem(final Game game) {
         this.game = game;
     }
 
@@ -13,4 +13,3 @@ public class CartItem {
         return game;
     }
 }
-

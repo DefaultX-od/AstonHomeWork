@@ -21,10 +21,10 @@ public class GameStoreDemo {
 
         CART_SERVICE.addGameToCart(myLittlePony, userCart);
 
-        CART_SERVICE.setRegionStrategy(RUSSIAN_REGION_STRATEGY);
-        System.out.printf("%s %s%n", CART_SERVICE.calculateCartTotal(userCart), CART_SERVICE.getRegionStrategy().getCurrency());
+        userCart.setRegionStrategy(RUSSIAN_REGION_STRATEGY);
+        System.out.printf("%s %s%n", CART_SERVICE.calculateCartTotal(userCart), userCart.getRegionStrategy().getCurrency());
 
-        CART_SERVICE.setRegionStrategy(UNITED_STATES_REGION_STRATEGY);
-        System.out.printf("%s %s%n", CART_SERVICE.calculateCartTotal(userCart), CART_SERVICE.getRegionStrategy().getCurrency());
+        userCart.setRegionStrategy(UNITED_STATES_REGION_STRATEGY);
+        System.out.printf("%s %s%n", CART_SERVICE.calculateCartTotal(userCart), userCart.getRegionStrategy().getCurrency());
     }
 }
