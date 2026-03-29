@@ -24,7 +24,7 @@ public final class PlayList implements IPlayList {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("id: %d; name: %s; imageCoverLink: %s;", id, name, imageCoverLink);
     }
 

@@ -1,6 +1,6 @@
 package ru.aston.task3.decorator;
 
-public class PlayListFull extends PlayListDecorator{
+public class PlayListFull extends PlayListDecorator {
     private final Integer trackCount;
 
     public PlayListFull(final IPlayList playList, final Integer trackCount) {
@@ -12,17 +12,17 @@ public class PlayListFull extends PlayListDecorator{
         return trackCount;
     }
 
-    public String play(){
+    public String play() {
         return " Запускаю проигрывание плейлиста";
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format(" trackCount: %d;", trackCount);
     }
 
     @Override
-    public String showInfo(){
+    public String showInfo() {
         return super.showInfo() + this + this.play();
     }
 }
