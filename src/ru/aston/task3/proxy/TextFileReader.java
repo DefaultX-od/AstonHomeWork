@@ -9,9 +9,9 @@ import java.util.List;
 
 public class TextFileReader implements IFileReader {
     private final String filePath;
-    final private List<String> fileContent;
+    private final List<String> fileContent;
 
-    public TextFileReader(String filePath) {
+    public TextFileReader(final String filePath) {
         this.filePath = filePath;
         this.fileContent = loadFile();
     }
