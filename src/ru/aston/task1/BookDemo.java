@@ -12,8 +12,6 @@ public class BookDemo {
         Book book = new Book("Lorem ipsum", "Marcus Tullius Cicero", pages);
         System.out.println(book);
         System.out.println("Содержание книги:");
-        for(Page page: book.getPages()){
-            System.out.println(page);
-        }
+        book.getPages().forEach(System.out::println);
     }
 }

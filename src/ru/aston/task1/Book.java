@@ -11,11 +11,11 @@ public final class Book {
     public Book(final String name, final String author, final List<Page> pages) {
         this.name = name;
         this.author = author;
-        this.pages = new ArrayList<>();
-        Optional.ofNullable(pages)
-                .ifPresent(pList -> pList.stream()
-                        .filter(Objects::nonNull)
-                        .forEach(page -> this.pages.add(page.clone())));
+        this.pages = Optional.ofNullable(pages)
+                .stream()
+                .flatMap(Collection::stream)
+                .map(Page::clone)
+                .toList();
         this.pageCount = this.pages.size();
     }
 
