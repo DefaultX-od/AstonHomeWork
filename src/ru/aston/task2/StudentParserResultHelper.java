@@ -3,8 +3,8 @@ package ru.aston.task2;
 import java.util.List;
 
 public class StudentParserResultHelper {
-    final private String[] studentData;
-    final private List<String[]> booksData;
+    private final String[] studentData;
+    private final List<String[]> booksData;
 
     public StudentParserResultHelper(final String[] studentData, final List<String[]> booksData) {
         this.studentData = studentData;

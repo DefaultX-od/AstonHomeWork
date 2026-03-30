@@ -9,13 +9,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class StudentFileParser {
-    final public static int MIN_NUMBER_OF_PARTS = 2;
+    public final static int MIN_NUMBER_OF_PARTS = 2;
 
-    private StudentFileParser() {
-
-    }
-
-    public static List<String> loadData(final String filePathFromUser) {
+    public List<String> loadData(final String filePathFromUser) {
         List<String> data = new ArrayList<>();
 
         try {
@@ -29,7 +25,7 @@ public class StudentFileParser {
         return data;
     }
 
-    private static String[] separateStudentsFromBooks(final String line) throws IllegalArgumentException {
+    private String[] separateStudentsFromBooks(final String line) throws IllegalArgumentException {
         final String[] parts = line.trim().split("\\|");
 
         if (parts.length < MIN_NUMBER_OF_PARTS) {
@@ -39,7 +35,7 @@ public class StudentFileParser {
         return parts;
     }
 
-    private static String[] separateStudentFields(final String studentString) throws IllegalArgumentException {
+    private String[] separateStudentFields(final String studentString) throws IllegalArgumentException {
         final String[] studentData = studentString.trim().split(",");
 
         if (studentData.length < Student.SIMPLE_FIELDS_NUMBER) {
@@ -49,7 +45,7 @@ public class StudentFileParser {
         return studentData;
     }
 
-    private static String[] separateBooks(final String booksString) throws IllegalArgumentException {
+    private String[] separateBooks(final String booksString) throws IllegalArgumentException {
         final String[] booksArr = booksString.trim().split("/");
 
         if (booksArr.length < Student.MIN_NUMBER_OF_BOOKS) {
@@ -59,7 +55,7 @@ public class StudentFileParser {
         return booksArr;
     }
 
-    private static List<String> separateBookFields(final String bookString) throws IllegalArgumentException {
+    private List<String> separateBookFields(final String bookString) throws IllegalArgumentException {
         final List<String> bookFields = Arrays.asList(bookString.trim().split(","));
 
         if (bookFields.size() < Book.SIMPLE_FIELDS_NUMBER) {
@@ -69,12 +65,12 @@ public class StudentFileParser {
         return bookFields;
     }
 
-    private static StudentParserResultHelper parseLine(final String line) {
+    private StudentParserResultHelper parseLine(final String line) {
         final String[] parts = separateStudentsFromBooks(line);
 
         final String[] studentData = separateStudentFields(parts[0]);
 
-        final List<String> booksStringList =  Arrays.stream(separateBooks(parts[1])).toList();
+        final List<String> booksStringList = Arrays.stream(separateBooks(parts[1])).toList();
         List<String[]> booksList = new ArrayList<>();
 
         for (final String bookString : booksStringList) {
@@ -85,7 +81,7 @@ public class StudentFileParser {
         return new StudentParserResultHelper(studentData, booksList);
     }
 
-    public static List<Student> loadStudents(final String filePathFromUser) {
+    public List<Student> loadStudents(final String filePathFromUser) {
         List<String> data = loadData(filePathFromUser);
         List<Student> students = new ArrayList<>();
 
@@ -108,7 +104,7 @@ public class StudentFileParser {
                 books.add(new Book(name, year, pageCount));
             }
 
-            students.add(new Student(studentId, studentGroup, studentFirstName, studentLastName, studentCourse, books));
+            students.add(new Student.Builder().id(studentId).group(studentGroup).firstName(studentFirstName).lastName(studentLastName).course(studentCourse).books(books).build());
         }
 
         return students;

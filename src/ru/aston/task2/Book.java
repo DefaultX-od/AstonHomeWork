@@ -3,13 +3,13 @@ package ru.aston.task2;
 import java.util.Objects;
 
 public class Book {
-    final public static int SIMPLE_FIELDS_NUMBER = 3;
+    public final static int SIMPLE_FIELDS_NUMBER = 3;
 
-    final private String name;
-    final private int year;
-    final private int pageCount;
+    private final String name;
+    private final int year;
+    private final int pageCount;
 
-    public Book(final String name, final int year, final int pageCount ) {
+    public Book(final String name, final int year, final int pageCount) {
         this.name = name;
         this.year = year;
         this.pageCount = pageCount;

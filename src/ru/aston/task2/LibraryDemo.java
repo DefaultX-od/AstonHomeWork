@@ -5,17 +5,13 @@ import java.util.Scanner;
 
 public class LibraryDemo {
 
-    public static String getFilePathFromUser() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите путь к файлу:");
-        return scanner.nextLine();
-    }
-
     public static void main(String[] args) {
-        final String filePathFromUser = getFilePathFromUser();
+        final Library library = new Library();
 
-        final List<Student> students = StudentFileParser.loadStudents(filePathFromUser);
+        final String filePathFromUser = library.getFilePathFromUser();
 
-        LibraryService.printStudentsAndBookYear(students, 2000);
+        final List<Student> students = library.getStudentFileParser().loadStudents(filePathFromUser);
+
+        library.getLibraryService().printStudentsAndBookYear(students, 2000);
     }
 }
