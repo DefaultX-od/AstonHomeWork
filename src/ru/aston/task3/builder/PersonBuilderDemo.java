@@ -11,8 +11,6 @@ public class PersonBuilderDemo {
                 new Person.Builder("Лия", "Доу", new Date(107, 11, 12),"female").cellPhone(88005553555L).build()
         );
 
-        for (Person person : people){
-            System.out.println(person);
-        }
+        people.forEach(System.out::println);
     }
 }
