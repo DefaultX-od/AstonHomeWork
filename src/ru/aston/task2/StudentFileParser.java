@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StudentFileParser {
     public final static int MIN_NUMBER_OF_PARTS = 2;
@@ -71,42 +72,39 @@ public class StudentFileParser {
         final String[] studentData = separateStudentFields(parts[0]);
 
         final List<String> booksStringList = Arrays.stream(separateBooks(parts[1])).toList();
-        List<String[]> booksList = new ArrayList<>();
 
-        for (final String bookString : booksStringList) {
-            List<String> fields = separateBookFields(bookString);
-            booksList.add(fields.toArray(new String[0]));
-        }
+        final List<String[]> booksList = booksStringList.stream()
+                .map(this::separateBookFields)
+                .map(book -> book.toArray(new String[0]))
+                .collect(Collectors.toList());
 
         return new StudentParserResultHelper(studentData, booksList);
     }
 
     public List<Student> loadStudents(final String filePathFromUser) {
         List<String> data = loadData(filePathFromUser);
-        List<Student> students = new ArrayList<>();
 
-        for (final String line : data) {
-            final List<Book> books = new ArrayList<>();
-            final StudentParserResultHelper studentParserResultHelper = parseLine(line);
+        return data.stream()
+                .map(this::parseLine)
+                .map(studentParserResultHelper -> {
+                    final String[] studentData = studentParserResultHelper.getStudent();
+                    final int studentId = Integer.parseInt(studentData[0]);
+                    final String studentGroup = studentData[1];
+                    final String studentFirstName = studentData[2];
+                    final String studentLastName = studentData[3];
+                    final int studentCourse = Integer.parseInt(studentData[4]);
 
-            final String[] studentData = studentParserResultHelper.getStudent();
-            final int studentId = Integer.parseInt(studentData[0]);
-            final String studentGroup = studentData[1];
-            final String studentFirstName = studentData[2];
-            final String studentLastName = studentData[3];
-            final int studentCourse = Integer.parseInt(studentData[4]);
+                    final List<Book> books = studentParserResultHelper.getBooks().stream()
+                            .map(bookData -> {
+                                final String name = bookData[0];
+                                final int year = Integer.parseInt(bookData[1]);
+                                final int pageCount = Integer.parseInt(bookData[2]);
+                                return new Book(name, year, pageCount);
+                            })
+                            .toList();
 
-            for (final String[] bookData : studentParserResultHelper.getBooks()) {
-                final String name = bookData[0];
-                final int year = Integer.parseInt(bookData[1]);
-                final int pageCount = Integer.parseInt(bookData[2]);
-
-                books.add(new Book(name, year, pageCount));
-            }
-
-            students.add(new Student.Builder().id(studentId).group(studentGroup).firstName(studentFirstName).lastName(studentLastName).course(studentCourse).books(books).build());
-        }
-
-        return students;
+                    return new Student.Builder().id(studentId).group(studentGroup).firstName(studentFirstName).lastName(studentLastName).course(studentCourse).books(books).build();
+                })
+                .collect(Collectors.toList());
     }
 }
