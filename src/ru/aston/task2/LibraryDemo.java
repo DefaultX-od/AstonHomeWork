@@ -6,12 +6,11 @@ import java.util.Scanner;
 public class LibraryDemo {
 
     public static void main(String[] args) {
-        final Library library = new Library();
+        final Scanner scanner = new Scanner(System.in);
+        final StudentFileParser studentFileParser = new StudentFileParser();
+        final LibraryService libraryService = new LibraryService();
+        final Library library = new Library(studentFileParser, libraryService, scanner);
 
-        final String filePathFromUser = library.getFilePathFromUser();
-
-        final List<Student> students = library.getStudentFileParser().loadStudents(filePathFromUser);
-
-        library.getLibraryService().printStudentsAndBookYear(students, 2000);
+        library.operate();
     }
 }
