@@ -3,7 +3,7 @@ package ru.aston.task3.strategy;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class RussianRegionStrategy implements RegionStrategy {
+public class RussianIRegionStrategy implements IRegionStrategy {
     public final static BigDecimal REGIONAL_DISCOUNT = new BigDecimal("0.7");
 
     @Override

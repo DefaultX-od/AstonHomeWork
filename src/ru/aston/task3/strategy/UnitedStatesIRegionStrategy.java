@@ -3,7 +3,7 @@ package ru.aston.task3.strategy;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class UnitedStatesRegionStrategy implements RegionStrategy {
+public class UnitedStatesIRegionStrategy implements IRegionStrategy {
     public final static BigDecimal TAX_MULTIPLIER = new BigDecimal("1.1");
 
     @Override
