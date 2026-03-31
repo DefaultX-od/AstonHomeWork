@@ -30,8 +30,8 @@ public class Library {
     public void operate() {
         final String filePathFromUser = getFilePathFromUser();
 
-        final List<Student> students = getStudentFileParser().loadStudents(filePathFromUser);
+        final List<Student> students = studentFileParser.loadStudents(filePathFromUser);
 
-        getLibraryService().printStudentsAndBookYear(students, 2000);
+        libraryService.printStudentsAndBookYear(students, 2000);
     }
 }
