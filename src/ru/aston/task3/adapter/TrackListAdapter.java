@@ -18,9 +18,9 @@ public class TrackListAdapter implements TrackListProvider {
                 .map(line -> line.split("; "))
                 .filter(parts -> parts.length == 3)
                 .map(parts -> new Track(
-                        parts[0],
-                        parts[1],
-                        Integer.parseInt(parts[2])
+                        parts[LegacyAPI.NAME_FIELD_POS],
+                        parts[LegacyAPI.ARTIST_FIELD_POS],
+                        Integer.parseInt(parts[LegacyAPI.YEAR_FIELD_POS])
                 ))
                 .toList();
     }

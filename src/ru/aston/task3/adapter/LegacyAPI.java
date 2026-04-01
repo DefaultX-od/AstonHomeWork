@@ -1,6 +1,10 @@
 package ru.aston.task3.adapter;
 
 public class LegacyAPI {
+    public static final int NAME_FIELD_POS = 0;
+    public static final int ARTIST_FIELD_POS = 1;
+    public static final int YEAR_FIELD_POS = 2;
+
     public String getRawTracks() {
         return "Bohemian Rhapsody; Queen; 1975\n" +
                 "Billie Jean; Michael Jackson; 1982\n" +
