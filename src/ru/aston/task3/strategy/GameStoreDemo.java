@@ -7,13 +7,7 @@ import java.util.Map;
 
 public class GameStoreDemo {
     public static void main(String[] args) {
-        final Map<String, IRegionStrategy> regionStrategyMap = Map.of(
-                "RU", new RussianIRegionStrategy(),
-                "US", new UnitedStatesIRegionStrategy()
-        );
-
-        final RegionStrategyRegistry regionStrategyRegistry = new RegionStrategyRegistry(regionStrategyMap);
-        final CartService cartService = new CartService(regionStrategyRegistry);
+        final CartService cartService = new CartService();
         final GameStore gameStore = new GameStore(cartService);
 
         final Cart cart = new Cart(
@@ -23,7 +17,7 @@ public class GameStoreDemo {
                 ))
         );
 
-        gameStore.run(cart, "RU");
-        gameStore.run(cart, "US");
+        gameStore.run(cart, RegionStrategies.RU.getRegionStrategy());
+        gameStore.run(cart, RegionStrategies.US.getRegionStrategy());
     }
 }

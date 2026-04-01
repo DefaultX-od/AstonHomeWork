@@ -7,8 +7,7 @@ public class GameStore {
         this.cartService = cartService;
     }
 
-    public void run(final Cart cart, final String strategyKey){
-        final IRegionStrategy regionStrategy = cartService.getRegionStrategyRegistry().getRegionStrategyByKey(strategyKey);
+    public void run(final Cart cart, final IRegionStrategy regionStrategy){
         System.out.printf("%s %s%n", cartService.calculateCartTotal(cart, regionStrategy), regionStrategy.getCurrency());
     }
 }
