@@ -1,8 +1,8 @@
 package ru.aston.task3.chainOfResponsibility;
 
-public class BanknoteDispenser5000 extends BanknoteDispenser {
+public class BanknoteDispenserXXL extends BanknoteDispenser {
 
-    public BanknoteDispenser5000(final int amount) {
+    public BanknoteDispenserXXL(final int amount) {
         super(amount);
     }
 

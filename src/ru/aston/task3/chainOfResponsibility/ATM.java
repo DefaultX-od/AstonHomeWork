@@ -4,13 +4,13 @@ public class ATM {
     private final BanknoteDispenser initialDispenser;
 
     public ATM() {
-        final BanknoteDispenser banknoteDispenser5000 = new BanknoteDispenser5000(Banknotes.FIVE_THOUSANDS.getValue());
-        final BanknoteDispenser banknoteDispenser2000 = new BanknoteDispenser2000(Banknotes.TWO_THOUSANDS.getValue());
-        final BanknoteDispenser banknoteDispenser1000 = new BanknoteDispenser1000(Banknotes.ONE_THOUSAND.getValue());
-        final BanknoteDispenser banknoteDispenser500 = new BanknoteDispenser500(Banknotes.FIVE_HUNDRED.getValue());
-        final BanknoteDispenser banknoteDispenser200 = new BanknoteDispenser200(Banknotes.TWO_HUNDRED.getValue());
-        final BanknoteDispenser banknoteDispenser100 = new BanknoteDispenser100(Banknotes.ONE_HUNDRED.getValue());
-        final BanknoteDispenser banknoteDispenser50 = new BanknoteDispenser50(Banknotes.FIFTY.getValue());
+        final BanknoteDispenser banknoteDispenser5000 = new BanknoteDispenserXXL(Banknotes.FIVE_THOUSANDS.getValue());
+        final BanknoteDispenser banknoteDispenser2000 = new BanknoteDispenserXL(Banknotes.TWO_THOUSANDS.getValue());
+        final BanknoteDispenser banknoteDispenser1000 = new BanknoteDispenserL(Banknotes.ONE_THOUSAND.getValue());
+        final BanknoteDispenser banknoteDispenser500 = new BanknoteDispenserM(Banknotes.FIVE_HUNDRED.getValue());
+        final BanknoteDispenser banknoteDispenser200 = new BanknoteDispenserS(Banknotes.TWO_HUNDRED.getValue());
+        final BanknoteDispenser banknoteDispenser100 = new BanknoteDispenserXS(Banknotes.ONE_HUNDRED.getValue());
+        final BanknoteDispenser banknoteDispenser50 = new BanknoteDispenserXXS(Banknotes.FIFTY.getValue());
 
         banknoteDispenser5000.setNextBanknoteDispenser(banknoteDispenser2000);
         banknoteDispenser2000.setNextBanknoteDispenser(banknoteDispenser1000);
