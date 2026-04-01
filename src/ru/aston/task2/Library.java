@@ -8,7 +8,7 @@ public class Library {
     private final LibraryService libraryService;
     private final Scanner scanner;
 
-    public Library(final StudentFileParser parser, final LibraryService service, final Scanner scanner ) {
+    public Library(final StudentFileParser parser, final LibraryService service, final Scanner scanner) {
         studentFileParser = parser;
         libraryService = service;
         this.scanner = scanner;

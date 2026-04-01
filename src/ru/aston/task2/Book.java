@@ -5,6 +5,10 @@ import java.util.Objects;
 public class Book {
     public final static int SIMPLE_FIELDS_NUMBER = 3;
 
+    public static final int NAME_POS = 0;
+    public static final int YEAR_POS = 1;
+    public static final int PAGE_COUNT_POS = 2;
+
     private final String name;
     private final int year;
     private final int pageCount;

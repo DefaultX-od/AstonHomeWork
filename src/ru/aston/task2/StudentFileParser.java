@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentFileParser {
-    public final static int MIN_NUMBER_OF_PARTS = 2;
+    public static final int MIN_NUMBER_OF_PARTS = 2;
 
     public List<String> loadData(final String filePathFromUser) {
         List<String> data = new ArrayList<>();
@@ -88,22 +88,22 @@ public class StudentFileParser {
                 .map(this::parseLine)
                 .map(studentParserResultHelper -> {
                     final String[] studentData = studentParserResultHelper.getStudent();
-                    final int studentId = Integer.parseInt(studentData[0]);
-                    final String studentGroup = studentData[1];
-                    final String studentFirstName = studentData[2];
-                    final String studentLastName = studentData[3];
-                    final int studentCourse = Integer.parseInt(studentData[4]);
+                    final int studentId = Integer.parseInt(studentData[Student.ID_POS]);
+                    final String studentGroup = studentData[Student.GROUP_POS];
+                    final String studentFirstName = studentData[Student.FIRST_NAME_POS];
+                    final String studentLastName = studentData[Student.LAST_NAME_POS];
+                    final int studentCourse = Integer.parseInt(studentData[Student.COURSE_POS]);
 
                     final List<Book> books = studentParserResultHelper.getBooks().stream()
                             .map(bookData -> {
-                                final String name = bookData[0];
-                                final int year = Integer.parseInt(bookData[1]);
-                                final int pageCount = Integer.parseInt(bookData[2]);
+                                final String name = bookData[Book.NAME_POS];
+                                final int year = Integer.parseInt(bookData[Book.YEAR_POS]);
+                                final int pageCount = Integer.parseInt(bookData[Book.PAGE_COUNT_POS]);
                                 return new Book(name, year, pageCount);
                             })
                             .toList();
 
-                    return new Student.Builder().id(studentId).group(studentGroup).firstName(studentFirstName).lastName(studentLastName).course(studentCourse).books(books).build();
+                    return Student.builder().id(studentId).group(studentGroup).firstName(studentFirstName).lastName(studentLastName).course(studentCourse).books(books).build();
                 })
                 .collect(Collectors.toList());
     }

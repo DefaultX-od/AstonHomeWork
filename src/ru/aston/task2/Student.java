@@ -6,6 +6,12 @@ public class Student {
     public final static int MIN_NUMBER_OF_BOOKS = 5;
     public final static int SIMPLE_FIELDS_NUMBER = 5;
 
+    public static final int ID_POS = 0;
+    public static final int GROUP_POS = 1;
+    public static final int FIRST_NAME_POS = 2;
+    public static final int LAST_NAME_POS = 3;
+    public static final int COURSE_POS = 4;
+
     private final int id;
     private final String group;
     private final String firstName;
@@ -20,6 +26,10 @@ public class Student {
         this.lastName = builder.lastName;
         this.course = builder.course;
         this.books = builder.books;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public int getId() {
