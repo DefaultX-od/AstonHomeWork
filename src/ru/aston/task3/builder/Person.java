@@ -23,6 +23,10 @@ public class Person {
         this.landLine = builder.landLine;
     }
 
+    public static Builder builder(final String firstName, final String lastName, final Date birthDate, final String gender) {
+        return new Builder(firstName, lastName, birthDate, gender);
+    }
+
     @Override
     public String toString() {
         return String.format("firstName: %s; middleName: %s; lastName: %s; birthDate: %s; gender: %s; email: %s; cellPhone: %d; landline: %d", firstName, middleName, lastName, birthDate, gender, email, cellPhone, landLine);
