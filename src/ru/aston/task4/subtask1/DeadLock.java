@@ -21,6 +21,7 @@ public class DeadLock {
         secondLock.unlock();
         firstLock.unlock();
     }
+
     public static void main(String[] args) throws InterruptedException {
         final DeadLock deadLock = new DeadLock();
         final String nameThread1 = "T1";
